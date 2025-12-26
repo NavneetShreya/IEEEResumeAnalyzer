@@ -171,23 +171,25 @@ def extract_skills_by_pattern(text):
     
     return unique_skills
 
-resume_path = 'resume.pdf'
+if __name__ == "__main__":
+    resume_path = 'resume.pdf'
+    
+    # Extract all the text from the pdf 
+    extracted_text = extract_text_from_pdf(resume_path)
+    
+    # Extract only skills
+    skills = extract_skills(extracted_text)
+    
+    print("=" * 50)
+    print("EXTRACTED SKILLS:")
+    print("=" * 50)
+    if skills:
+        for i, skill in enumerate(skills, 1):
+            print(f"{i}. {skill}")
+    else:
+        print("No skills found in the resume.")
+    print("=" * 50)
 
-# Extract all the text from the pdf 
-extracted_text = extract_text_from_pdf(resume_path)
-
-# Extract only skills
-skills = extract_skills(extracted_text)
-
-print("=" * 50)
-print("EXTRACTED SKILLS:")
-print("=" * 50)
-if skills:
-    for i, skill in enumerate(skills, 1):
-        print(f"{i}. {skill}")
-else:
-    print("No skills found in the resume.")
-print("=" * 50)
 
 
 

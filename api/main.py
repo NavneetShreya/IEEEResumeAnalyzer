@@ -1,10 +1,16 @@
 # api/main.py
 
+import sys
+from pathlib import Path
+
+#parent directory to Python path to import resume_analyzer
+parent_dir = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(parent_dir))
+
 from fastapi import FastAPI, UploadFile, Form, File
 from fastapi.responses import JSONResponse
 import shutil
 import os
-from pathlib import Path
 from resume_analyzer import extract_text_from_pdf, extract_skills
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
